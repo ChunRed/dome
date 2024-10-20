@@ -90,7 +90,7 @@ export default function Record() {
     function writeUserData(value) {
         const db = getDatabase();
 
-        set(ref(db, '/data/' + (firebase_data_length)), [20, 200, value]);
+        set(ref(db, '/data/' + (firebase_data_length)), [Math.floor(Math.random() * 5), Math.floor(Math.random() * 255), value]);
         console.log("send message:" + value + " done");
     }
     //send data to firebase/////////////////////////////////////////////////////
