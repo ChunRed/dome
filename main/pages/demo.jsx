@@ -32,7 +32,30 @@ export default function Record() {
     function readOnceWithGet() {
         const dbRef = ref(getDatabase());
         //if (value != undefined) {
-            get(child(dbRef, '/test')).then((snapshot) => {
+        get(child(dbRef, '/data')).then((snapshot) => {
+            if (snapshot.exists()) {
+
+                let data = snapshot.val();
+                firebase_data_length = data.length;
+                console.log(data);
+                console.log(firebase_data_length);
+
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+        //}
+    }
+
+    //useEffect(readOnceWithGet, []);
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            const dbRef = ref(getDatabase());
+            //if (value != undefined) {
+            get(child(dbRef, '/data')).then((snapshot) => {
                 if (snapshot.exists()) {
 
                     let data = snapshot.val();
@@ -46,12 +69,14 @@ export default function Record() {
             }).catch((error) => {
                 console.error(error);
             });
-        //}
-    }
+            //}
 
-    useEffect(readOnceWithGet, []);
+        }, 1000);
+        return () => clearInterval(id);
+    }, [firebase_data_length]);
+
     //read data 
-    /////////////firebase/////////////////////////////////////////////////////
+    //firebase/////////////////////////////////////////////////////
 
 
     //send data to firebase/////////////////////////////////////////////////////
@@ -65,8 +90,8 @@ export default function Record() {
     function writeUserData(value) {
         const db = getDatabase();
 
-        set(ref(db, '/test/' + (firebase_data_length)), value);
-        console.log("send message:"+ value+ " done");
+        set(ref(db, '/data/' + (firebase_data_length)), [20, 200, value]);
+        console.log("send message:" + value + " done");
     }
     //send data to firebase/////////////////////////////////////////////////////
 
@@ -79,7 +104,6 @@ export default function Record() {
                 <div className="h1 text-center m-2 text-light">Title Name</div>
                 <div className={layout.hrline}></div>
             </div>
-
 
 
             {/* --------------------- main --------------------- */}
