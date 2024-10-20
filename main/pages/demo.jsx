@@ -51,7 +51,7 @@ export default function Record() {
 
     useEffect(readOnceWithGet, []);
     //read data 
-    //firebase/////////////////////////////////////////////////////
+    /////////////firebase/////////////////////////////////////////////////////
 
 
     //send data to firebase/////////////////////////////////////////////////////
@@ -79,7 +79,6 @@ export default function Record() {
                 <div className="h1 text-center m-2 text-light">Title Name</div>
                 <div className={layout.hrline}></div>
             </div>
-
 
 
 
