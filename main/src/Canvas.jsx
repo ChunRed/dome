@@ -35,6 +35,16 @@ let orbitRadiusMultiplier = 1;
 let canvasWidth = 0;
 let canvasHeight = 0;
 
+function vh(percent) {
+    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    return (percent * h) / 100;
+}
+
+function vw(percent) {
+    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    return (percent * w) / 100;
+}
+
 
 
 class Canvas extends React.Component {
@@ -44,7 +54,7 @@ class Canvas extends React.Component {
         const setup = (P5, canvasParentRef) => {
 
             canvasWidth = innerWidth - 50;
-            canvasHeight = innerHeight * 0.35;
+            canvasHeight = vh(45);
 
             P5.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
 

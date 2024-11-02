@@ -29,7 +29,7 @@ export default function Record() {
             </div>
             
             <div className="row">
-                <div id="dev1" className="col bg-dark text-center Canvas">
+                <div id="dev1" className="col bg-black text-center Canvas">
                     <Canvas>
 
                     </Canvas>
@@ -64,7 +64,7 @@ export default function Record() {
 
             <style jsx>{`
                 .Canvas{
-                    height: 35vh;
+                    height: 45vh;
                 }
                     
             `}</style>
