@@ -29,7 +29,7 @@ export default function Record() {
             </div>
             
             <div className="row">
-                <div id="dev1" className="col bg-light text-center Canvas">
+                <div id="dev1" className="col bg-dark text-center Canvas">
                     <Canvas>
 
                     </Canvas>
@@ -46,7 +46,7 @@ export default function Record() {
                 <div className="h1 text-center m-2 text-light">Data</div>
             </div>
             <div className="row">
-                <div className="col bg-light text-center Canvas">  </div>
+                <div className="col bg-dark text-center Canvas">  </div>
             </div>
 
 
