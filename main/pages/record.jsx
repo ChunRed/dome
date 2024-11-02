@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import layout from '../styles/layout.module.css';
 import styles from '../styles/Home.module.css';
 
+import Canvas from '../src/Canvas.jsx'
+
 
 export default function Record() {
     return (
@@ -25,9 +27,19 @@ export default function Record() {
             <div className="row mt-5">
                 <div className="h1 text-center m-2 text-light">Recording...</div>
             </div>
+            
             <div className="row">
-                <div className="col bg-light text-center Canvas">  </div>
+                <div id="dev1" className="col bg-light text-center Canvas">
+                    <Canvas>
+
+                    </Canvas>
+                </div>
             </div>
+
+
+
+
+
 
 
             <div className="row mt-5">
@@ -47,9 +59,12 @@ export default function Record() {
                 </div>
             </div>
 
+
+
+
             <style jsx>{`
                 .Canvas{
-                    height: 25vh;
+                    height: 35vh;
                 }
                     
             `}</style>
