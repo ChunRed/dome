@@ -10,6 +10,7 @@ import layout from '../styles/layout.module.css';
 import styles from '../styles/Home.module.css';
 
 import Canvas from '../src/Canvas.jsx'
+import Canvas2 from '../src/Canvas2.jsx'
 
 
 export default function Record() {
@@ -58,12 +59,13 @@ export default function Record() {
             <div className="row">
                 <div id="dev1" className="col bg-black text-center Canvas">
                     {/* <Canvas></Canvas> */}
+                    <Canvas2></Canvas2>
                 </div>
             </div>
 
 
 
-            <Alert show={show} variant="dark" className='mt-3'>
+            <Alert show={show} variant={layout.gray} className='mt-3 '>
                 <Alert.Heading className='text-success'>收音成功</Alert.Heading>
                 <p className='text-success'>
                     傳送資料至Dome<br />Received successfully, data sent to Dome.

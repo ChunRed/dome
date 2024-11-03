@@ -3,3 +3,8 @@
     border-width: medium;
     color: rgb(139, 139, 139);
 }
+
+.gray{
+    color: rgb(157, 80, 80);
+    background-color: rgb(152, 212, 156);
+}
