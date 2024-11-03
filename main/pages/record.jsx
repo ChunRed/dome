@@ -57,9 +57,7 @@ export default function Record() {
 
             <div className="row">
                 <div id="dev1" className="col bg-black text-center Canvas">
-                    <Canvas>
-
-                    </Canvas>
+                    {/* <Canvas></Canvas> */}
                 </div>
             </div>
 
