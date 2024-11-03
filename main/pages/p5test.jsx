@@ -15,6 +15,7 @@ let r, g, b;
 let mic, fft;
 
 export default (props) => {
+    
     const setup = (P5, canvasParentRef) => {
         P5.createCanvas(300, 300).parent(canvasParentRef);
 

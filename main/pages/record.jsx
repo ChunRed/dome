@@ -11,32 +11,34 @@ import styles from '../styles/Home.module.css';
 
 import Canvas from '../src/Canvas.jsx'
 import Canvas2 from '../src/Canvas2.jsx'
+import Canvas3,{RecordFlag} from '../src/Canvas3.jsx'
 
 
 export default function Record() {
 
     const [show, setShow] = useState(false);
     let count = 0;
-    let record_time = 3;
+    let record_time = 5;
 
-    function Timer(){
+    function Timer() {
         let timer = setInterval(() => {
-            if(record_time > count) count +=1;
-            else{
+            if (record_time > count) count += 1;
+            else {
                 setShow(true);
+                RecordFlag();
                 clearInterval(timer);
             }
             console.log(count);
         }, 1000)
     }
 
-    function SendMSG(){
+
+    function SendMSG() {
         setShow(false);
-        Timer();
     }
 
 
-    useEffect(Timer, []);
+    // useEffect(Timer, []);
 
     return (
         <div className="container bg-black ">
@@ -59,7 +61,8 @@ export default function Record() {
             <div className="row">
                 <div id="dev1" className="col bg-black text-center Canvas">
                     {/* <Canvas></Canvas> */}
-                    <Canvas2></Canvas2>
+                    {/* <Canvas2></Canvas2> */}
+                    <Canvas3></Canvas3>
                 </div>
             </div>
 
@@ -70,6 +73,7 @@ export default function Record() {
                 <p className='text-success'>
                     傳送資料至Dome<br />Received successfully, data sent to Dome.
                 </p>
+                
                 <hr />
                 <div className="d-flex justify-content-end ">
                     <Button onClick={() => SendMSG()} variant="outline-success w-100">
@@ -86,7 +90,7 @@ export default function Record() {
                         <div className="col-6">
                             <div className="card bg-black">
                                 <ul className="list-group list-group-flush ">
-                                    <li className="list-group-item bg-black text-light">分貝｜decibel </li>
+                                    <li className=" list-group-item bg-black text-light">分貝｜decibel </li>
                                     <li className="list-group-item bg-black text-light">頻率｜frequency </li>
                                     <li className="list-group-item bg-black text-light">色彩｜color </li>
                                 </ul>
@@ -96,9 +100,9 @@ export default function Record() {
                         <div className="col-6">
                             <div className="card bg-black">
                                 <ul className="list-group list-group-flush ">
-                                    <li className="list-group-item bg-black text-light">0000</li>
-                                    <li className="list-group-item bg-black text-light">0000</li>
-                                    <li className="list-group-item bg-black text-light">#000000</li>
+                                    <li className="decibel list-group-item bg-black text-light">0000</li>
+                                    <li className="frequency list-group-item bg-black text-light">0000</li>
+                                    <li className="color list-group-item bg-black text-light">#000000</li>
                                 </ul>
                             </div>
                         </div>
@@ -109,8 +113,14 @@ export default function Record() {
 
 
             {/* --------------------- footer --------------------- */}
-
             <div className="row mt-5">
+                <div className="col text-center">
+                    <button onClick={() => {RecordFlag(); Timer();}} className='BTN btn btn-block btn-outline-light p-2 w-100'><h3>Start Record</h3></button>
+                </div>
+            </div>
+
+
+            <div className="row mt-3">
                 <div className="col text-center">
                     <button className='btn btn-block btn-outline-light p-2 w-100'><Link className='h4' href={'/'}>Back</Link></button>
                 </div>

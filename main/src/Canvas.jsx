@@ -151,7 +151,7 @@ class Canvas extends React.Component {
             P5.textSize(16);
             if (state.isRecording) {
                 P5.text("Recording Time: " + P5.nf((P5.millis() - state.recordStartTime) / 1000, 0, 1) + "s", 10, 0);
-                P5.text("Volume: " + nf(decibels, 0, 1) + " dB", 10, 20);
+                P5.text("Volume: " + P5.nf(decibels, 0, 1) + " dB", 10, 20);
                 P5.text("Circles: " + currentCircleCount, 10, 40);
             }
             P5.pop();
