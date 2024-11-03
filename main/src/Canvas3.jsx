@@ -69,10 +69,6 @@ class Canvas3 extends React.Component {
             canvasHeight = vh(45);
             P5.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
 
-            // DOM 宣告
-            decibel = document.querySelector('.decibel');
-            frequency = document.querySelector('.frequency');
-            color = document.querySelector('.color');
         };
         ////////////////////////////////////////////////////////////////////////
         /////////////////////////                ///////////////////////////////
@@ -91,11 +87,16 @@ class Canvas3 extends React.Component {
         ////////////////////////////////////////////////////////////////////////
         const draw = (P5) => {
 
-            P5.background(30);
+            P5.background(0);
 
             if (record_flag) {
                 rms = analyzer.getLevel();
                 spectrum = fft.analyze();
+                
+                // DOM 宣告
+                decibel = document.querySelector('.decibel');
+                frequency = document.querySelector('.frequency');
+                color = document.querySelector('.color');
 
                 //顯示分貝、頻率、顏色數值在UI上
                 //分別更改一下三行的value
