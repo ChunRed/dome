@@ -12,6 +12,7 @@
     "next-videos": "^1.4.1",
     "p5": "^1.11.1",
     "react": "18.2.0",
+    "react-bootstrap": "^2.10.5",
     "react-dom": "18.2.0",
     "react-p5": "^1.4.1"
   },
