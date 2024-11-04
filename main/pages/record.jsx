@@ -13,6 +13,8 @@ import Canvas from '../src/Canvas.jsx'
 import Canvas2 from '../src/Canvas2.jsx'
 import Canvas3,{RecordFlag} from '../src/Canvas3.jsx'
 
+import useRWD from '../src/useRWD';
+
 
 export default function Record() {
 
@@ -41,7 +43,7 @@ export default function Record() {
     // useEffect(Timer, []);
 
     return (
-        <div className="container bg-black ">
+        <div className="container-fluid bg-black ">
 
             {/* --------------------- title --------------------- */}
             <div className="row mt-3">
@@ -86,8 +88,9 @@ export default function Record() {
 
             {!show &&
                 <div>
-                    <div className="row">
-                        <div className="col-6">
+                    <div className="row mt-5">
+                        <div className=" col-xl-3 col-lg-1 "></div>
+                        <div className=" col-xl-3 col-lg-5 col-md-6 col-sm-6 col-6">
                             <div className="card bg-black">
                                 <ul className="list-group list-group-flush ">
                                     <li className=" list-group-item bg-black text-light">分貝｜decibel </li>
@@ -97,7 +100,7 @@ export default function Record() {
                             </div>
                         </div>
 
-                        <div className="col-6">
+                        <div className="col-xl-3 col-lg-5 col-md-6 col-sm-6 col-6">
                             <div className="card bg-black">
                                 <ul className="list-group list-group-flush ">
                                     <li className="decibel list-group-item bg-black text-light">0000</li>
@@ -106,6 +109,7 @@ export default function Record() {
                                 </ul>
                             </div>
                         </div>
+                        <div className="col-xl-3 col-lg-1"></div>
                     </div>
                 </div>
             }
@@ -113,18 +117,26 @@ export default function Record() {
 
 
             {/* --------------------- footer --------------------- */}
-            <div className="row mt-5">
-                <div className="col text-center">
+            <div className="row mt-5 justify-content-center">
+                <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 text-center">
                     <button onClick={() => {RecordFlag(); Timer();}} className='BTN btn btn-block btn-outline-light p-2 w-100'><h3>Start Record</h3></button>
                 </div>
             </div>
 
 
-            <div className="row mt-3">
-                <div className="col text-center">
+            <div className="row mt-3 justify-content-center">
+                <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 text-center">
                     <button className='btn btn-block btn-outline-light p-2 w-100'><Link className='h4' href={'/'}>Back</Link></button>
                 </div>
             </div>
+
+
+
+            {/* <div className="row mt-3 justify-content-center">
+                <div className="col-6 text-light">{useRWD()}</div>
+            </div> */}
+
+
 
 
 

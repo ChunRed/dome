@@ -87,7 +87,7 @@ class Canvas3 extends React.Component {
         ////////////////////////////////////////////////////////////////////////
         const draw = (P5) => {
 
-            P5.background(0);
+            P5.background(60);
 
             if (record_flag) {
                 rms = analyzer.getLevel();
