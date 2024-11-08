@@ -23,6 +23,7 @@ export default function Record() {
     const [show, setShow] = useState(false);
     let count = 0;
     let record_time = 5;
+    
 
     function Timer() {
         let timer = setInterval(() => {
@@ -30,6 +31,7 @@ export default function Record() {
             else {
                 setShow(true);
                 RecordFlag();
+                document.querySelector(':root').style.setProperty('--color', 'rgb(255,0,0)');;
                 clearInterval(timer);
             }
             console.log(count);
@@ -71,18 +73,18 @@ export default function Record() {
 
             <div className="row justify-content-center">
                 <Alert show={show} variant={layout.gray} className='col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12 mt-3'>
-                    <Alert.Heading className='text-success'>收音成功</Alert.Heading>
-                    <p className='text-success'>
+                    <Alert.Heading className=''style={{color:firebase_value[2]}}>收音成功</Alert.Heading>
+                    <p className=''style={{color:firebase_value[2]}}>
                         傳送資料至Dome<br />Received successfully, data sent to Dome.
                     </p>
 
-                    <div className='text-success'>
+                    <div className=''style={{color:firebase_value[2]}}>
                         send message: {firebase_value[0]} : {firebase_value[1]} : {firebase_value[2]}
                     </div>
 
                     <hr />
                     <div className="d-flex justify-content-end ">
-                        <Button onClick={() => SendMSG()} variant=" bg-success w-100">
+                        <Button onClick={() => SendMSG()} variant="  w-100 " style={{backgroundColor:firebase_value[2]}}>
                             <h3>傳送｜Send Message</h3>
                         </Button>
                     </div>
@@ -99,9 +101,9 @@ export default function Record() {
                         <div className=" col-xl-3 col-lg-5 col-md-6 col-sm-6 col-6">
                             <div className="card bg-black">
                                 <ul className="list-group list-group-flush ">
-                                    <li className=" list-group-item bg-black text-success border-secondary">分貝｜decibel </li>
-                                    <li className="list-group-item bg-black text-success border-secondary">頻率｜frequency </li>
-                                    <li className="list-group-item bg-black text-success border-secondary">色彩｜color </li>
+                                    <li className=" list-group-item bg-black border-secondary" style={{color:firebase_value[2]}}>分貝｜decibel </li>
+                                    <li className="list-group-item bg-black border-secondary" style={{color:firebase_value[2]}}>頻率｜frequency </li>
+                                    <li className="list-group-item bg-black border-secondary" style={{color:firebase_value[2]}}>色彩｜color </li>
                                 </ul>
                             </div>
                         </div>
@@ -120,7 +122,7 @@ export default function Record() {
 
                     <div className="row mt-5 justify-content-center ">
                         <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 text-center">
-                            <button onClick={() => { RecordFlag(); Timer(); }} className='BTN btn btn-block p-2 w-100 bg-success'>開始錄製｜Start Recording</button>
+                            <button onClick={() => { RecordFlag(); Timer(); }} className='BTN btn btn-block p-2 w-100' style={{backgroundColor:firebase_value[2]}}>開始錄製｜Start Recording</button>
                         </div>
                     </div>
 

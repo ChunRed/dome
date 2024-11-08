@@ -22,7 +22,7 @@ let mic, fft;
 let record_flag = false;
 let rms;
 let spectrum = 0;
-export let firebase_value = ["","",""];
+export let firebase_value = ["","","#44DBC4"];
 
 // 視覺化參數
 let angle = 0;

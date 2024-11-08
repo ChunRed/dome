@@ -1,3 +1,5 @@
+
+
 .hrline {
     border-top: solid;
     border-width: medium;
@@ -15,4 +17,10 @@
 
 .text-third{
     color: rgb(86, 211, 113);
+}
+
+.COLOR{
+    /* color: var(--color); */
+    color: bisque;
+    background-color: blueviolet;
 }
