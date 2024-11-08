@@ -120,20 +120,23 @@ export default function Record() {
 
                     <div className="row mt-5 justify-content-center ">
                         <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 text-center">
-                            <button onClick={() => { RecordFlag(); Timer(); }} className='BTN btn btn-block p-2 w-100 bg-success'><h3>開始錄製｜Start Recording</h3></button>
+                            <button onClick={() => { RecordFlag(); Timer(); }} className='BTN btn btn-block p-2 w-100 bg-success'>開始錄製｜Start Recording</button>
                         </div>
                     </div>
 
 
-                    <div className="row mt-3 justify-content-center">
+                    <div className="row mt-5 justify-content-center">
                         <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 text-center">
-                            <button className='btn btn-block btn-outline-secondary p-2 w-100'><Link className='h4' href={'/'}>返回｜Back</Link></button>
+                            <button className='btn btn-block btn-outline-secondary p-2 w-100'><Link className='text-light' href={'/'}>返回｜Back</Link></button>
                         </div>
                     </div>
+
                 </div>
 
 
             }
+
+            <div className="row mt-5  w-100" style={{height:"100px"}}></div>
 
 
 

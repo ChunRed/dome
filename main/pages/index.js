@@ -11,32 +11,51 @@ export default function Home() {
   return (
     <div className="container-fluid bg-black">
 
-      {/* --------------------- title --------------------- */}
-      <div className="row mt-3">
-        <div className="h1 text-center m-2 text-light">Overloaded</div>
-        <div className={layout.hrline}></div>
-      </div>
-
 
 
 
       {/* --------------------- main --------------------- */}
 
-      <div className="row mt-5 justify-content-center">
-        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center ">
-          <button className='btn btn-block btn-outline-light p-3 w-100 '><Link className='h4' href={'/record'}>Start</Link></button>
-        </div>
-      </div>
+      <header>
+        <video className='fullscreen-video' src={require('../media/01.mp4')} autoPlay muted loop playsInline />
+        <div className="header-content">
+          <div className="header-content-inner">
+
+            <div className="row w-100 test justify-content-center">
+              <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center h1">
+                Overloaded
+              </div>
+            </div>
 
 
-      <div className="row mt-5 justify-content-center">
-        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center">
-          <button className='btn btn-block btn-outline-light p-3 w-100'><Link className='h4' href={'/demo'}>Demo</Link></button>
+            <div className="row w-100 test mt-5 justify-content-center">
+              <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center ">
+                <button className='btn btn-block btn-outline-light w-50 bg-success bg-opacity-75'><Link className='h3' href={'/record'}>Start</Link></button>
+              </div>
+            </div>
+
+
+
+
+          </div>
         </div>
-      </div>
+      </header>
+
+
 
       {/* --------------------- footer --------------------- */}
 
+      <div className="row justify-content-center">
+        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center text-light">
+          made by 2023.5 LAB
+        </div>
+      </div>
+
+      <div className="row justify-content-center m-3">
+        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center text-secondary">
+          林芸均｜林俊遑｜陳懿｜黃紀虹｜詹登凱｜蔡承嶧｜戴婕茵
+        </div>
+      </div>
 
 
     </div>
