@@ -46,14 +46,14 @@ export default function Home() {
       {/* --------------------- footer --------------------- */}
 
       <div className="row justify-content-center">
-        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center text-light">
-          made by 2023.5 LAB
+        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center text-light opacity-50">
+          2023.5 LAB
         </div>
       </div>
 
       <div className="row justify-content-center m-3">
-        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center text-secondary">
-          林芸均｜林俊遑｜陳懿｜黃紀虹｜詹登凱｜蔡承嶧｜戴婕茵
+        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center text-success opacity-50" styles={{fontSize:"1px !important"}}>
+          林芸均｜林俊遑｜陳懿｜黃紀虹<br/>詹登凱｜蔡承嶧｜戴婕茵
         </div>
       </div>
 
