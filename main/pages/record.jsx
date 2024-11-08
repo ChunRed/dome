@@ -9,11 +9,13 @@ import "bootstrap/dist/css/bootstrap.css";
 import layout from '../styles/layout.module.css';
 import styles from '../styles/Home.module.css';
 
-import Canvas from '../src/Canvas.jsx'
-import Canvas2 from '../src/Canvas2.jsx'
-import Canvas3,{RecordFlag} from '../src/Canvas3.jsx'
+import Canvas3, { RecordFlag, firebase_value } from '../src/Canvas3.jsx';
+
+
+// import FireBase from '../src/FireBase.jsx';
 
 import useRWD from '../src/useRWD';
+import FireBase, { writeUserData } from '../src/FireBase.jsx';
 
 
 export default function Record() {
@@ -37,6 +39,7 @@ export default function Record() {
 
     function SendMSG() {
         setShow(false);
+        writeUserData(firebase_value[0], firebase_value[1], firebase_value[2]);
     }
 
 
@@ -56,33 +59,36 @@ export default function Record() {
 
             {/* --------------------- main --------------------- */}
 
-            <div className="row mt-5">
-                <div className="h1 text-center m-2 text-light">Recording...</div>
-            </div>
-
             <div className="row">
                 <div id="dev1" className="col bg-black text-center Canvas">
                     {/* <Canvas></Canvas> */}
                     {/* <Canvas2></Canvas2> */}
                     <Canvas3></Canvas3>
+                    {/* <FireBase></FireBase> */}
+                    <FireBase ></FireBase>
                 </div>
             </div>
 
+            <div className="row justify-content-center">
+                <Alert show={show} variant={layout.gray} className='col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12 mt-3'>
+                    <Alert.Heading className='text-success'>收音成功</Alert.Heading>
+                    <p className='text-success'>
+                        傳送資料至Dome<br />Received successfully, data sent to Dome.
+                    </p>
 
+                    <div className='text-success'>
+                        send message: {firebase_value[0]} : {firebase_value[1]} : {firebase_value[2]}
+                    </div>
 
-            <Alert show={show} variant={layout.gray} className='mt-3 '>
-                <Alert.Heading className='text-success'>收音成功</Alert.Heading>
-                <p className='text-success'>
-                    傳送資料至Dome<br />Received successfully, data sent to Dome.
-                </p>
-                
-                <hr />
-                <div className="d-flex justify-content-end ">
-                    <Button onClick={() => SendMSG()} variant="outline-success w-100">
-                        傳送｜Send Message
-                    </Button>
-                </div>
-            </Alert>
+                    <hr />
+                    <div className="d-flex justify-content-end ">
+                        <Button onClick={() => SendMSG()} variant=" bg-success w-100">
+                            <h3>傳送｜Send Message</h3>
+                        </Button>
+                    </div>
+                </Alert>
+            </div>
+
 
 
 
@@ -93,9 +99,9 @@ export default function Record() {
                         <div className=" col-xl-3 col-lg-5 col-md-6 col-sm-6 col-6">
                             <div className="card bg-black">
                                 <ul className="list-group list-group-flush ">
-                                    <li className=" list-group-item bg-black text-light">分貝｜decibel </li>
-                                    <li className="list-group-item bg-black text-light">頻率｜frequency </li>
-                                    <li className="list-group-item bg-black text-light">色彩｜color </li>
+                                    <li className=" list-group-item bg-black text-success border-secondary">分貝｜decibel </li>
+                                    <li className="list-group-item bg-black text-success border-secondary">頻率｜frequency </li>
+                                    <li className="list-group-item bg-black text-success border-secondary">色彩｜color </li>
                                 </ul>
                             </div>
                         </div>
@@ -103,38 +109,31 @@ export default function Record() {
                         <div className="col-xl-3 col-lg-5 col-md-6 col-sm-6 col-6">
                             <div className="card bg-black">
                                 <ul className="list-group list-group-flush ">
-                                    <li className="decibel list-group-item bg-black text-light">0000</li>
-                                    <li className="frequency list-group-item bg-black text-light">0000</li>
-                                    <li className="color list-group-item bg-black text-light">#000000</li>
+                                    <li className="decibel list-group-item bg-black text-light border-secondary">0000</li>
+                                    <li className="frequency list-group-item bg-black text-light border-secondary">0000</li>
+                                    <li className="color list-group-item bg-black text-light border-secondary">#000000</li>
                                 </ul>
                             </div>
                         </div>
                         <div className="col-xl-3 col-lg-1"></div>
                     </div>
+
+                    <div className="row mt-5 justify-content-center ">
+                        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 text-center">
+                            <button onClick={() => { RecordFlag(); Timer(); }} className='BTN btn btn-block p-2 w-100 bg-success'><h3>開始錄製｜Start Recording</h3></button>
+                        </div>
+                    </div>
+
+
+                    <div className="row mt-3 justify-content-center">
+                        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 text-center">
+                            <button className='btn btn-block btn-outline-secondary p-2 w-100'><Link className='h4' href={'/'}>返回｜Back</Link></button>
+                        </div>
+                    </div>
                 </div>
+
+
             }
-
-
-
-            {/* --------------------- footer --------------------- */}
-            <div className="row mt-5 justify-content-center">
-                <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 text-center">
-                    <button onClick={() => {RecordFlag(); Timer();}} className='BTN btn btn-block btn-outline-light p-2 w-100'><h3>Start Record</h3></button>
-                </div>
-            </div>
-
-
-            <div className="row mt-3 justify-content-center">
-                <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 text-center">
-                    <button className='btn btn-block btn-outline-light p-2 w-100'><Link className='h4' href={'/'}>Back</Link></button>
-                </div>
-            </div>
-
-
-
-            {/* <div className="row mt-3 justify-content-center">
-                <div className="col-6 text-light">{useRWD()}</div>
-            </div> */}
 
 
 

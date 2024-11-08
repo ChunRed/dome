@@ -87,6 +87,7 @@ export default function Record() {
         // typed.destroy();
         readOnceWithGet();
     }
+    
     function writeUserData(value) {
         const db = getDatabase();
 

@@ -22,6 +22,7 @@ let mic, fft;
 let record_flag = false;
 let rms;
 let spectrum = 0;
+export let firebase_value = ["","",""];
 
 // 視覺化參數
 let angle = 0;
@@ -40,13 +41,14 @@ let isPlaying = false;
 // 常量
 const SHAPE_CHANGE_INTERVAL = 1000;
 const COLOR_STOPS = [
+    '#FFFFFF',
     '#FF0000', // 紅
     '#FF8000', // 橙
     '#FFFF00', // 黃
     '#00FF00', // 綠
     '#0080FF', // 藍
     '#8000FF', // 紫
-    '#FF0000'  // 回到紅
+    '#FFFFFF',
 ];
 
 // 顏色處理(還在思考)
@@ -117,6 +119,9 @@ export function RecordFlag() {
 }
 
 
+
+
+
 // 輔助函數們~~
 
 //決定顏色
@@ -151,8 +156,10 @@ class Canvas3 extends React.Component {
             P5.noFill();
         };
 
+
+        //MARK:DRAW
         const draw = (P5) => {
-            P5.background('#2B2B2B');
+            P5.background(0);
 
 /////////////////////////////聲音數據分析區開始///////////////////////////////////////////////////////
             if (record_flag) {
@@ -164,7 +171,7 @@ class Canvas3 extends React.Component {
                 frequency = document.querySelector('.frequency');
                 color = document.querySelector('.color');
             
-                // 分貝計算改
+                //分貝計算改
                 if (decibel) {
                     // 計算平均振幅
                     const sumAmplitude = spectrum.reduce((sum, value) => sum + value, 0);
@@ -181,10 +188,14 @@ class Canvas3 extends React.Component {
                     db = P5.map(normalizedAmplitude, 0, 1, MIN_DB, MAX_DB)*5;//乘以5數值比較正常，如果有需要可以微調這個係數
                     db = Math.max(MIN_DB, Math.min(MAX_DB, db));
                     
+                    //MARK:decibel.innerHTML
                     decibel.innerHTML = Math.round(db);
+                    firebase_value[0] = Math.round(db);
                     
                     // tttttesttttt
-                    console.log("Amplitude:", avgAmplitude, "DB:", db);
+                    //console.log("Amplitude:", avgAmplitude, "DB:", db);
+                    //console.log(firebase_value[0] + " : " + firebase_value[1] + " : " + firebase_value[2]);
+                    
                 }
                 
                 // 頻率計算保持不變
@@ -198,11 +209,16 @@ class Canvas3 extends React.Component {
                         }
                     }
                     freq = Math.round((maxIndex * 44100) / (spectrum.length * 2));
+
+                    //MARK:frequency.innerHTML
                     frequency.innerHTML = freq;
+                    firebase_value[1] = freq;
                 }
                 
                 if (color) {
+                    //MARK:color.innerHTML
                     color.innerHTML = getGradientColor(colorOffset);
+                    firebase_value[2] = getGradientColor(colorOffset);
                 }
 /////////////////////////////聲音數據分析區結束///////////////////////////////////////////////////////
                 
@@ -212,7 +228,7 @@ class Canvas3 extends React.Component {
                 P5.push();
                 P5.translate(P5.width/2, P5.height/2);
             
-               
+            
             
                 P5.pop();
             }

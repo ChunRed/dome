@@ -62,7 +62,7 @@ class Canvas extends React.Component {
 
 
         const draw = (P5) => {
-            P5.background(220);
+            P5.background(0);
             P5.translate(canvasWidth / 2, canvasHeight / 2);
 
             if (state.isPlaying && P5.millis() - state.shapeChangeTimer > SHAPE_CHANGE_INTERVAL) {
