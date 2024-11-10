@@ -26,8 +26,8 @@ export let firebase_value = ["","","#44DBC4"];
 
 // 視覺化參數
 let angle = 0;
-let radius = 40;
-let outerRadius = 45;
+let radius = 60;
+let outerRadius = 85;
 let innerRadius = 60;
 let radiatingAngle = 0;
 let colorOffset = 0;  // 用於顏色漸變
@@ -275,20 +275,21 @@ class Canvas3 extends React.Component {
             P5.pop();
 
             // 外圈
-            P5.strokeWeight(6);
+            P5.strokeWeight(3);
+            P5.stroke(255);
             P5.ellipse(0, 0, outerRadius * 2, outerRadius * 2);
 
             // 動態圓點
             const circleCount = Math.floor(P5.map(freq || 0, 0, 1000, 2, 6));
-            const darkerColor = getCurrentColor(P5, 0.7);  // 70% 透明度
-            P5.fill(darkerColor);
+            //const darkerColor = getCurrentColor(P5, 0.7);  // 70% 透明度
+            P5.fill(255);
             for(let i = 0; i < circleCount; i++) {
                 const sphereAngle = angle * 3 + (P5.TWO_PI * i / circleCount);
                 const x = P5.cos(sphereAngle) * mappedRadius;
                 const y = P5.sin(sphereAngle) * mappedRadius;
                 
                 P5.strokeWeight(1);
-                P5.circle(x, y, 15);
+                P5.circle(x, y, 10);
             }
             P5.noFill();
 
