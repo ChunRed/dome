@@ -22,7 +22,7 @@ export default function Home() {
           <div className="header-content-inner">
 
             <div className="row w-100 test justify-content-center">
-              <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center h1"style={{color:"#3BC5AC"}}>
+              <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center h1" style={{ color: "#3BC5AC" }}>
                 Overloaded
               </div>
             </div>
@@ -30,7 +30,7 @@ export default function Home() {
 
             <div className="row w-100 test mt-5 justify-content-center">
               <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center ">
-                <button className='btn btn-block btn-outline-light w-50' style={{backgroundColor:"#3BC5AC"}}><Link className='h3' href={'/record'}>Start</Link></button>
+                <button className='btn btn-block btn-outline-light w-50' style={{ backgroundColor: "#3BC5AC" }}><Link className='h3' href={'/record'}>Start</Link></button>
               </div>
             </div>
 
@@ -38,6 +38,7 @@ export default function Home() {
 
 
           </div>
+
         </div>
       </header>
 
@@ -46,16 +47,14 @@ export default function Home() {
       {/* --------------------- footer --------------------- */}
 
       <div className="row justify-content-center">
-        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center text-light opacity-50 m-5">
-          2023.5 LAB
-        </div>
+        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center text-light opacity-50 m-5">2023.5 LAB</div>
       </div>
 
-      {/* <div className="row justify-content-center m-3">
-        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center text-success opacity-50" styles={{fontSize:"1px !important"}}>
-          林芸均｜林俊遑｜陳懿｜黃紀虹<br/>詹登凱｜蔡承嶧｜戴婕茵
+      <div className="row mt-2 justify-content-center">
+        <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center ">
+          <button className='btn btn-block btn-outline-light w-50' style={{ backgroundColor: "#3BC5AC" }}><Link className='h3' href={'/demo'}>test</Link></button>
         </div>
-      </div> */}
+      </div>
 
 
     </div>

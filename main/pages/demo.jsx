@@ -8,115 +8,122 @@ import styles from '../styles/Home.module.css';
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, child, get, set, push } from "firebase/database";
 
-
-export default function Record() {
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyBEkaUuAs0sl-NMhIK45qZWV0H5RnPj3gQ",
-        authDomain: "dome-test-714cb.firebaseapp.com",
-        databaseURL: "https://dome-test-714cb-default-rtdb.firebaseio.com",
-        projectId: "dome-test-714cb",
-        storageBucket: "dome-test-714cb.appspot.com",
-        messagingSenderId: "66308364634",
-        appId: "1:66308364634:web:362e03d5d2cc8eea017b63",
-        measurementId: "G-GG07CCQ2YH"
-    };
-
-    const app = initializeApp(firebaseConfig);
-
-    //read firebase data/////////////////////////////////////////////////////////
-    let firebase_data = '';
-    let firebase_data_length = 0;
-    let typed;
-
-    function readOnceWithGet() {
-        const dbRef = ref(getDatabase());
-        //if (value != undefined) {
-        get(child(dbRef, '/data')).then((snapshot) => {
-            if (snapshot.exists()) {
-
-                let data = snapshot.val();
-                firebase_data_length = data.length;
-                console.log(data);
-                console.log(firebase_data_length);
-
-            } else {
-                console.log("No data available");
-            }
-        }).catch((error) => {
-            console.error(error);
-        });
-        //}
-    }
-
-    //useEffect(readOnceWithGet, []);
-
-    useEffect(() => {
-        const id = setInterval(() => {
-            const dbRef = ref(getDatabase());
-            //if (value != undefined) {
-            get(child(dbRef, '/data')).then((snapshot) => {
-                if (snapshot.exists()) {
-
-                    let data = snapshot.val();
-                    firebase_data_length = data.length;
-                    console.log(data);
-                    console.log(firebase_data_length);
-
-                } else {
-                    console.log("No data available");
-                }
-            }).catch((error) => {
-                console.error(error);
-            });
-            //}
-
-        }, 1000);
-        return () => clearInterval(id);
-    }, [firebase_data_length]);
-
-    //read data 
-    //firebase/////////////////////////////////////////////////////
+import FireBase, { writeUserData } from '../src/FireBase.jsx';
 
 
-    //send data to firebase/////////////////////////////////////////////////////
-    function set_firebase_data(e) {
-        const { value } = document.querySelector(e.target.getAttribute("data-input"));
-        firebase_data = '';
-        writeUserData(value);
-        // typed.destroy();
-        readOnceWithGet();
-    }
-    
-    function writeUserData(value) {
-        const db = getDatabase();
+let target_value = [0,0,"#ffffff"];
 
-        set(ref(db, '/data/' + (firebase_data_length)), [Math.floor(Math.random() * 5), Math.floor(Math.random() * 255), value]);
-        console.log("send message:" + value + " done");
-    }
-    //send data to firebase/////////////////////////////////////////////////////
+const COLOR_STOPS = [
+    '#FFFFFF',
+    '#FF0000', // 紅
+    '#FF8000', // 橙
+    '#FFFF00', // 黃
+    '#00FF00', // 綠
+    '#0080FF', // 藍
+    '#8000FF', // 紫
+    '#FFFFFF',
+];
+
+
+function SetFrequency(e) {
+    const { value } = document.querySelector(e.target.getAttribute("data-input"));
+    target_value[1] = parseInt(value);
+    ChangeValue();
+}
+
+function Random(){
+    target_value[0] = Math.floor(Math.random() * 100);
+    target_value[1] = Math.floor(Math.random() * 1000);
+    target_value[2] = COLOR_STOPS[Math.floor(Math.random() * 8)];
+    ChangeValue()
+}
+
+function ChangeValue(){
+    document.querySelector(".decibel").innerHTML = target_value[0];
+    document.querySelector(".frequency").innerHTML = target_value[1];
+    document.querySelector(".color").innerHTML = target_value[2];
+}
+
+function SEND(){
+    writeUserData(target_value[0], target_value[1], target_value[2]);
+    Random();
+    ChangeValue();
+}
+
+
+export default function Demo() {
 
 
     return (
         <div className="container bg-black ">
-
+            <FireBase ></FireBase>
             {/* --------------------- title --------------------- */}
             <div className="row mt-3">
-                <div className="h1 text-center m-2 text-light">Title Name</div>
+                <div className="h1 text-center m-2 text-light">Test Web</div>
                 <div className={layout.hrline}></div>
             </div>
 
 
-            {/* --------------------- main --------------------- */}
+            {/* --------------------- 指定頻率 --------------------- */}
 
-            <div className="row mt-5">
+            <div className="row mt-5 text-light justify-content-center h4">指定頻率</div>
+
+            <div className="row mt-1">
                 <div className="input-group mt-2 ">
                     <input id='input_value' type="text" className="form-control" placeholder="your message..." aria-label="Write Message In This Barcode" aria-describedby="basic-addon2" />
                     <div className="input-group-append">
-                        <button className="btn btn-outline-light" data-input="#input_value" onClick={(e) => set_firebase_data(e)} type="button">Save</button>
+                        <button className="btn btn-outline-light" data-input="#input_value" onClick={(e) => SetFrequency(e)} type="button">Save</button>
                     </div>
                 </div>
             </div>
+
+
+            {/* --------------------- 隨機按鈕 --------------------- */}
+
+            <div className="row mt-3">
+                <div className="col text-center">
+                    <button className='btn btn-block btn-outline-light p-2 w-100 h4' onClick={() => {Random()}}>Random Frequency</button>
+                </div>
+            </div>
+
+
+            {/* --------------------- 傳送列表 --------------------- */}
+
+            <div className="row mt-5 h4 text-light justify-content-center"> 傳送資料 </div>
+
+            <div className="row mt-3">
+                <div className=" col-xl-3 col-lg-1 "></div>
+                <div className=" col-xl-3 col-lg-5 col-md-6 col-sm-6 col-6">
+                    <div className="card bg-black">
+                        <ul className="list-group list-group-flush ">
+                            <li className=" list-group-item bg-black border-secondary text-light" >分貝｜decibel </li>
+                            <li className="list-group-item bg-black border-secondary text-light" >頻率｜frequency </li>
+                            <li className="list-group-item bg-black border-secondary text-light" >色彩｜color </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div className="col-xl-3 col-lg-5 col-md-6 col-sm-6 col-6">
+                    <div className="card bg-black">
+                        <ul className="list-group list-group-flush ">
+                            <li className="decibel list-group-item bg-black text-light border-secondary">{target_value[0]}</li>
+                            <li className="frequency list-group-item bg-black text-light border-secondary">{target_value[1]}</li>
+                            <li className="color list-group-item bg-black text-light border-secondary">{target_value[2]}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="col-xl-3 col-lg-1"></div>
+            </div>
+
+            {/* --------------------- 傳送按鈕 --------------------- */}
+
+            <div className="row mt-5">
+                <div className="col text-center">
+                    <button className='btn btn-block btn-outline-light p-2 w-100 h4' onClick={() => {SEND()}}>Send</button>
+                </div>
+            </div>
+
+
 
 
 
@@ -124,18 +131,9 @@ export default function Record() {
 
             <div className="row mt-5">
                 <div className="col text-center">
-                    <button className='btn btn-block btn-outline-light p-2 w-100'><Link className='h4' href={'/'}>Back</Link></button>
+                    <button className='btn btn-block btn-outline-light p-2 w-100'><Link className='text-light' href={'/'}>Back</Link></button>
                 </div>
             </div>
-
-
-
-            <style jsx>{`
-                .Canvas{
-                    height: 25vh;
-                }
-                    
-            `}</style>
 
         </div>
 
