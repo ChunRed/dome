@@ -208,7 +208,7 @@ class Canvas3 extends React.Component {
                             maxIndex = i;
                         }
                     }
-                    freq = Math.round((maxIndex * 44100) / (spectrum.length * 2));
+                    freq = Math.max(50,Math.min(Math.round((maxIndex * 44100) / (spectrum.length * 2)),800));
 
                     //MARK:frequency.innerHTML
                     frequency.innerHTML = freq;
