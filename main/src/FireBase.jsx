@@ -64,11 +64,11 @@ function readOnceWithGet() {
 
 
 //MARK:WRITE DATA
-export function writeUserData(decibel, frequency, color) {
+export function writeUserData(decibel, frequency, color, shape) {
     const db = getDatabase();
 
-    set(ref(db, '/data/' + (firebase_data_length)), [decibel, frequency, color]);
-    console.log("send message: " + decibel.toString() + " : " + frequency.toString() + " : " + color + " done");
+    set(ref(db, '/data/' + (firebase_data_length)), [decibel, frequency, color, shape]);
+    console.log("send message: " + decibel.toString() + " : " + frequency.toString() + " : " + color + " : " + shape + " done");
 }
 
 

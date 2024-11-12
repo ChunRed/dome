@@ -219,6 +219,8 @@ class Canvas3 extends React.Component {
                     //MARK:color.innerHTML
                     color.innerHTML = getGradientColor(colorOffset);
                     firebase_value[2] = getGradientColor(colorOffset);
+                    firebase_value[3] = shapeEdges[currentShapeIndex];
+
                 }
 /////////////////////////////聲音數據分析區結束///////////////////////////////////////////////////////
                 

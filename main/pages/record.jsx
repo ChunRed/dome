@@ -41,7 +41,7 @@ export default function Record() {
 
     function SendMSG() {
         setShow(false);
-        writeUserData(firebase_value[0], firebase_value[1], firebase_value[2]);
+        writeUserData(firebase_value[0], firebase_value[1], firebase_value[2], firebase_value[3]);
     }
 
 
