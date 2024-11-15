@@ -35,7 +35,7 @@ function SetFrequency(e) {
 
 function Random(){
     target_value[0] = Math.floor(Math.random() * 100);
-    target_value[1] = Math.floor(Math.random() * 1000);
+    target_value[1] = Math.floor(Math.random() * (800 - 50) + 50);
     target_value[2] = COLOR_STOPS[Math.floor(Math.random() * 8)];
     target_value[3] = SHAPE[Math.floor(Math.random() * 9)];
     ChangeValue()
