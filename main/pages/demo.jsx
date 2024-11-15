@@ -11,7 +11,7 @@ import { getDatabase, ref, child, get, set, push } from "firebase/database";
 import FireBase, { writeUserData } from '../src/FireBase.jsx';
 
 
-let target_value = [0,0,"#ffffff"];
+let target_value = [0,0,"#ffffff",0];
 
 const COLOR_STOPS = [
     '#FFFFFF',
@@ -24,6 +24,8 @@ const COLOR_STOPS = [
     '#FFFFFF',
 ];
 
+const SHAPE = [0, 3, 4, 5, 6, 7, 8, 9, 10];
+
 
 function SetFrequency(e) {
     const { value } = document.querySelector(e.target.getAttribute("data-input"));
@@ -35,6 +37,7 @@ function Random(){
     target_value[0] = Math.floor(Math.random() * 100);
     target_value[1] = Math.floor(Math.random() * 1000);
     target_value[2] = COLOR_STOPS[Math.floor(Math.random() * 8)];
+    target_value[3] = SHAPE[Math.floor(Math.random() * 9)];
     ChangeValue()
 }
 
@@ -42,10 +45,12 @@ function ChangeValue(){
     document.querySelector(".decibel").innerHTML = target_value[0];
     document.querySelector(".frequency").innerHTML = target_value[1];
     document.querySelector(".color").innerHTML = target_value[2];
+    document.querySelector(".color").innerHTML = target_value[2];
+    document.querySelector(".shape").innerHTML = target_value[3];
 }
 
 function SEND(){
-    writeUserData(target_value[0], target_value[1], target_value[2]);
+    writeUserData(target_value[0], target_value[1], target_value[2], target_value[3]);
     Random();
     ChangeValue();
 }
@@ -99,6 +104,7 @@ export default function Demo() {
                             <li className=" list-group-item bg-black border-secondary text-light" >分貝｜decibel </li>
                             <li className="list-group-item bg-black border-secondary text-light" >頻率｜frequency </li>
                             <li className="list-group-item bg-black border-secondary text-light" >色彩｜color </li>
+                            <li className="list-group-item bg-black border-secondary text-light" >形狀｜shape </li>
                         </ul>
                     </div>
                 </div>
@@ -109,6 +115,7 @@ export default function Demo() {
                             <li className="decibel list-group-item bg-black text-light border-secondary">{target_value[0]}</li>
                             <li className="frequency list-group-item bg-black text-light border-secondary">{target_value[1]}</li>
                             <li className="color list-group-item bg-black text-light border-secondary">{target_value[2]}</li>
+                            <li className="shape list-group-item bg-black text-light border-secondary">{target_value[3]}</li>
                         </ul>
                     </div>
                 </div>

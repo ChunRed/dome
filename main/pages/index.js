@@ -57,6 +57,12 @@ export default function Home() {
       </div>
 
 
+      <div className="row m-5 justify-content-center">
+        
+      </div>
+
+
+
     </div>
 
   );
