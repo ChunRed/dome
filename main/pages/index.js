@@ -50,11 +50,11 @@ export default function Home() {
         <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center text-light opacity-50 m-5">2023.5 LAB</div>
       </div>
 
-      <div className="row mt-2 justify-content-center">
+      {/* <div className="row mt-2 justify-content-center">
         <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 text-center ">
           <button className='btn btn-block btn-outline-light w-50' style={{ backgroundColor: "#3BC5AC" }}><Link className='h3' href={'/demo'}>test</Link></button>
         </div>
-      </div>
+      </div> */}
 
 
       <div className="row m-5 justify-content-center">
